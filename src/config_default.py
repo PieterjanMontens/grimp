@@ -1,4 +1,6 @@
-CFG = {
-    'NEO4j_URL' : 'http://localhost:7474/db/data/'
+CFG = {'type' : None # sorl | neo4j
+      ,'url' : None
+      ,'in2out' : [('FieldIn' , 'FieldOut')
+                  ]
     }
 
