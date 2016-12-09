@@ -44,7 +44,7 @@ class SolrImporter:
         #    Base["language"].append("nl")
 
         ### Mentions
-        #others = data["other_advices"]
+ vis        #others = data["other_advices"]
         #current = data["number"]
         #if current in others:
         #    others.remove(current)

@@ -7,6 +7,7 @@ import sys,os, os.path, importlib
 #from grimp_importer import Importer
 from solr_importer import SolrImporter
 import logging, logging.config, logging.handlers
+import pysolr
 
 abspath = os.path.abspath(__file__)
 os.chdir(os.path.dirname(abspath))
@@ -66,9 +67,16 @@ def main():
                 sys.stdout.write(line)
 
         except ValueError as e:
-            if not options.quiet:
-                logger.exception(e)
-                logger.warning('Warning: line failed to parse, probably not valid json\n{0}'.format(line))
+            logger.warning('Warning: line failed to parse, probably not valid json\n{0}'.format(line))
+            logger.exception(e)
+        except pysolr.SolrError as e:
+            logger.warning('Warning: Solr error')
+            logger.exception(e)
+        except Exception as e:
+            logger.warning('Exception raised')
+            logger.exception(e)
+            raise
+
 
     ############ Job's done !
     exit(0)
